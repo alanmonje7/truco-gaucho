@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Truco Gaucho</title>
+    <link rel="stylesheet" href="css/estilo_gaucho.css">
+    <script defer>
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(sec => sec.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <button onclick="mostrarSeccion('introduccion')">Introducción</button>
+        <button onclick="mostrarSeccion('valores')">Valores de las Cartas</button>
+        <button onclick="mostrarSeccion('envido')">¿Qué es el Envido?</button>
+        <button onclick="mostrarSeccion('truco')">¿Qué es el Truco?</button>
+        <button onclick="mostrarSeccion('flor')">¿Y la Flor?</button>
+    </div>
+
+    <div class="container">
+
+        <div id="introduccion" class="seccion">
+            <h1>Truco Gaucho</h1>
+            <h2>Aprendé a jugar paso a paso</h2>
+            <p>El truco es un juego de cartas tradicional muy popular en Argentina. Se juega con baraja española y combina estrategia, engaño y picardía.</p>
+            <img src="img/explicacion_truco.png" alt="Explicación visual del Truco argentino">
+        </div>
+
+        <div id="valores" class="seccion" style="display:none;">
+            <h3>Valores de las Cartas</h3>
+            <p>El orden es muy particular. Las cartas más poderosas son:</p>
+            <div class="cartas-destacadas">
+                <div class="carta-box">
+                    <h4>1 de Espadas</h4>
+                    <img src="img/1espada.jpg" alt="1 de Espadas">
+                </div>
+                <div class="carta-box">
+                    <h4>1 de Bastos</h4>
+                    <img src="img/1basto.png" alt="1 de Bastos">
+                </div>
+                <div class="carta-box">
+                    <h4>7 de Espadas</h4>
+                    <img src="img/7espada.jpg" alt="7 de Espadas">
+                </div>
+                <div class="carta-box">
+                    <h4>7 de Oro</h4>
+                    <img src="img/7oro.jpg" alt="7 de Oro">
+                </div>
+            </div>
+            <p>Luego siguen el 3, el 2, el 1 de copas/oros/espadas/bastos, etc.</p>
+        </div>
+
+        <div id="envido" class="seccion" style="display:none;">
+            <h3>¿Qué es el Envido?</h3>
+            <p>El envido es una apuesta donde se comparan puntos de dos cartas del mismo palo. El que más tiene, gana.</p>
+        </div>
+
+        <div id="truco" class="seccion" style="display:none;">
+            <h3>¿Qué es el Truco?</h3>
+            <p>El truco es el corazón del juego. Se canta para desafiar al oponente a ganar la mano con cartas más fuertes.</p>
+        </div>
+
+        <div id="flor" class="seccion" style="display:none;">
+            <h3>¿Y la Flor?</h3>
+            <p>La Flor es como el Envido, pero con tres cartas del mismo palo. Es rara y vale mucho.</p>
+        </div>
+
+    </div>
+</body>
+</html>
