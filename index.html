@@ -1,78 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Truco Gaucho</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truco Gaucho</title>
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" href="icons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="icons/favicon.svg" />
-    <link rel="shortcut icon" href="icons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Truco Gaucho" />
-    <link rel="manifest" href="icons/site.webmanifest" />
+  <!-- Manifest para PWA -->
+  <link rel="manifest" href="/truco-gaucho/manifest.json" />
 
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles.css">
+  <!-- Favicon / Iconos -->
+  <link rel="icon" type="image/png" href="/truco-gaucho/img/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/truco-gaucho/img/icon-512.png" />
+  <meta name="theme-color" content="#ffd700" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Truco Gaucho" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/truco-gaucho/css/estilo_gaucho.css" />
 </head>
-<body>
-    <div class="container">
-        <h1>Truco Gaucho</h1>
+<body style="background-image: url('/truco-gaucho/img/fondo_gaucho.jpg'); background-size: cover; color: white; text-align: center; font-family: 'Georgia', serif;">
 
-        <div class="menu">
-            <button onclick="mostrarSeccion('introduccion')">Introducción</button>
-            <button onclick="mostrarSeccion('valores')">Valores de las Cartas</button>
-            <button onclick="mostrarSeccion('pasos')">Cómo se Juega</button>
-        </div>
+  <h1 style="font-size: 2.5rem; margin-top: 30px;">Truco Gaucho</h1>
+  <p style="font-size: 1.3rem;">¡Aprendé a jugar al truco como un verdadero gaucho!</p>
 
-        <div id="introduccion" class="seccion">
-            <h2>¿Qué es el Truco?</h2>
-            <p>El truco es un juego de cartas tradicional argentino lleno de picardía y estrategia. Jugado con la baraja española, combina apuestas, engaños y señas.</p>
-            <img src="img/gaucho_intro.jpg" alt="Gaucho jugando al truco">
-        </div>
+  <img src="/truco-gaucho/img/explicacion_truco.png" alt="Explicación Truco" style="max-width: 90%; margin-top: 20px; border: 4px solid #ffd700; border-radius: 15px;" />
 
-        <div id="valores" class="seccion">
-            <h2>Valores de las Cartas</h2>
-            <p>Estas son las cartas más fuertes del juego, en orden de poder:</p>
-            <div class="cartas">
-                <div class="carta">
-                    <img src="img/1_espada.png" alt="1 de Espadas">
-                    <p>1 de Espadas</p>
-                </div>
-                <div class="carta">
-                    <img src="img/1_basto.png" alt="1 de Bastos">
-                    <p>1 de Bastos</p>
-                </div>
-                <div class="carta">
-                    <img src="img/7_espada.png" alt="7 de Espadas">
-                    <p>7 de Espadas</p>
-                </div>
-                <div class="carta">
-                    <img src="img/7_oros.png" alt="7 de Oros">
-                    <p>7 de Oros</p>
-                </div>
-            </div>
-        </div>
-
-        <div id="pasos" class="seccion">
-            <h2>Cómo se Juega</h2>
-            <ul>
-                <li>Se reparten 3 cartas a cada jugador.</li>
-                <li>Se juega por rondas, ganando el que tenga la carta más fuerte.</li>
-                <li>Se puede cantar Truco, Envido o Flor para subir la apuesta.</li>
-                <li>El primero en llegar a 30 puntos gana el partido.</li>
-            </ul>
-            <img src="img/gaucho_truco.jpg" alt="Gaucho explicando el truco">
-        </div>
-    </div>
-
-    <script>
-        function mostrarSeccion(id) {
-            const secciones = document.querySelectorAll('.seccion');
-            secciones.forEach(sec => sec.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
-        }
-    </script>
+  <!-- Registrar Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/truco-gaucho/service-worker.js')
+        .then(reg => console.log("Service Worker registrado:", reg.scope))
+        .catch(err => console.error("Error al registrar el Service Worker:", err));
+    }
+  </script>
 </body>
 </html>
